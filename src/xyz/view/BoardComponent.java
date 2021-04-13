@@ -1,4 +1,7 @@
 package xyz.view;
 
-public class BoardComponent {
+import javax.swing.*;
+
+public class BoardComponent extends JComponent {
+
 }

@@ -3,38 +3,58 @@ package xyz.model;
 public class Square {
     private BoardLocation location;
     private boolean isOpened;
+    private boolean isFlag;
     private boolean hasLandMine;
     private byte numberOfLandMine;
 
     public Square(BoardLocation location) {
         this.location = location;
+        isOpened = false;
+        isFlag = false;
+        hasLandMine = false;
+        numberOfLandMine = 0;
     }
 
-    public BoardLocation getLocation() {
+    public BoardLocation getLocation () {
         return location;
     }
 
-    public boolean isOpened() {
+    public boolean isOpened () {
         return isOpened;
     }
 
-    public boolean isHasLandMine() {
+    public boolean hasLandMine () {
         return hasLandMine;
     }
 
-    public byte getNumberOfLandMine() {
+    public byte getNumberOfLandMine () {
         return numberOfLandMine;
     }
     public void setOpened(boolean opened) {
         isOpened = opened;
     }
 
-    public void setHasLandMine(boolean hasLandMine) {
+    public void setHasLandMine (boolean hasLandMine) {
         this.hasLandMine = hasLandMine;
     }
 
-    public void setNumberOfLandMine(byte numberOfLandMine) {
+    public void setNumberOfLandMine (byte numberOfLandMine) {
         this.numberOfLandMine = numberOfLandMine;
+    }
+
+    public boolean isFlag() {
+        return isFlag;
+    }
+
+    public void setFlag(boolean flag) {
+        isFlag = flag;
+    }
+
+    public int getNum () {
+        if (isFlag) return 11;
+        if (!isOpened) return 9;
+        if (hasLandMine) return 10;
+        return numberOfLandMine;
     }
 
     /*

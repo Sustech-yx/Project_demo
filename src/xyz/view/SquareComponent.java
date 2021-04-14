@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class SquareComponent extends JPanel {
-    private Image grid;
+    private static Image grid = Toolkit.getDefaultToolkit().getImage("src/xyz/view/pic/emptygrid.png");
     private int size;
 
     public SquareComponent (int size) {
@@ -12,9 +12,6 @@ public class SquareComponent extends JPanel {
         setSize(size, size);
 
         this.size = size;
-
-        Toolkit toolkit = this.getToolkit();
-        grid = toolkit.getImage("src/xyz/view/pic/emptygrid.png");
     }
 
     @Override

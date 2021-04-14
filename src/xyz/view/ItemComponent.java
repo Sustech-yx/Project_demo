@@ -17,7 +17,14 @@ public class ItemComponent extends JComponent {
     }
 
     private void painting (Graphics g) {
-
+        ((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        int spacing = (int) (getWidth() * 0.05);
+        Image image = ItemUtil.genItem(num);
+        if (image != null) {
+            g.drawImage(image, spacing, spacing, getWidth() - 2 * spacing, getHeight() - 2 * spacing, this);
+        } else {
+            if (num == 0) return;
+            g.drawString("" + num, spacing, spacing);
+        }
     }
-
 }

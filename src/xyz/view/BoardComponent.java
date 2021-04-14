@@ -48,6 +48,16 @@ public class BoardComponent extends JComponent {
         return new BoardLocation(x / gridSize, y / gridSize);
     }
 
+    private void removeItemAt (BoardLocation location) {
+        getGridAt(location).removeAll();
+        getGridAt(location).revalidate();
+    }
+
+    public void setItemAt (BoardLocation location, int num) {
+        removeItemAt(location);
+        getGridAt(location).add(new ItemComponent(num));
+    }
+
     private void openGrid (BoardLocation location, int num) {
         getGridAt(location).removeAll();
         getGridAt(location).add(new ItemComponent(num));
@@ -60,17 +70,29 @@ public class BoardComponent extends JComponent {
     @Override
     protected void processMouseEvent(MouseEvent e) {
         super.processMouseEvent(e);
+        if (e.getID() != MouseEvent.MOUSE_PRESSED) return;
         if (e.getButton() == MouseEvent.BUTTON1) {
             // TODO: 2021/4/13 left mouse button
-
+            JComponent clickedComponent = (JComponent) getComponentAt(e.getX(), e.getY());
+            BoardLocation location = getLocationByPosition(e.getX(), e.getY());
+            for (GameListener listener : listenerList) {
+                listener.onPlayerLeftClick(location, (SquareComponent) clickedComponent);
+            }
         } else if (e.getButton() == MouseEvent.BUTTON2) {
             // TODO: 2021/4/13 middle mouse button
-
+            JComponent clickedComponent = (JComponent) getComponentAt(e.getX(), e.getY());
+            BoardLocation location = getLocationByPosition(e.getX(), e.getY());
+            for (GameListener listener : listenerList) {
+                listener.onPlayerMidClick(location, (SquareComponent) clickedComponent);
+            }
         } else if (e.getButton() == MouseEvent.BUTTON3) {
             // TODO: 2021/4/13 right mouse button
-
+            JComponent clickedComponent = (JComponent) getComponentAt(e.getX(), e.getY());
+            BoardLocation location = getLocationByPosition(e.getX(), e.getY());
+            for (GameListener listener : listenerList) {
+                listener.onPlayerRightClick(location, (SquareComponent) clickedComponent);
+            }
         }
-
     }
 
     public void registerListener(GameListener listener) {

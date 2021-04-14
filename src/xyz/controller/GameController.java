@@ -8,9 +8,9 @@ import xyz.view.ScoreBoard;
 import xyz.view.SquareComponent;
 
 public class GameController implements GameListener {
-    private BoardComponent view1;
-    private ScoreBoard view2;
-    private Board model;
+    private final BoardComponent view1;
+    private final ScoreBoard view2;
+    private final Board model;
     private int currentPlayer;
 
     public GameController (BoardComponent component, Board board, ScoreBoard scoreBoard) {
@@ -36,15 +36,9 @@ public class GameController implements GameListener {
         view1.repaint();
     }
 
-    public int nextPlayer() {
-        return currentPlayer = currentPlayer == 0 ? 1 : 0;
+    public void nextPlayer() {
+        currentPlayer = currentPlayer == 0 ? 1 : 0;
     }
-
-
-
-
-
-
 
     @Override
     public void onPlayerLeftClick(BoardLocation location, SquareComponent component) {
@@ -89,7 +83,7 @@ public class GameController implements GameListener {
     private void printMessage (BoardLocation location, String str) {
         int row_in_message = location.getRow();
         int column_in_message = location.getColumn();
-        String format = "\nOn Player %d %s click at (%d, %d).";
+        String format = "\nOn Player %d %s click at (%d, %d). ";
         System.out.printf(format, currentPlayer, str, row_in_message + 1, column_in_message + 1);
     }
 

@@ -17,6 +17,7 @@ public class SquareComponent extends JPanel {
     @Override
     protected void paintComponent (Graphics g) {
         super.paintComponent(g);
+        // if (this.getComponentCount() != 0) return;
         paintSquare(g);
     }
 

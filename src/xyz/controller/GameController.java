@@ -46,8 +46,16 @@ public class GameController implements GameListener {
     @Override
     public void onPlayerLeftClick(BoardLocation location, SquareComponent component) {
         printMessage(location, "left");
+        if (model.isValidClick(location, 1)) {
+            if (!model.getGridAt(location).hasLandMine()) {
+                model.openGrid(location);
 
+                view.setItemAt(location, model.getNumAt(location));
+                view.repaint();
+            } else {
 
+            }
+        }
     }
 
     @Override

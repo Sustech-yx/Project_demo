@@ -58,11 +58,6 @@ public class BoardComponent extends JComponent {
         getGridAt(location).add(new ItemComponent(num));
     }
 
-    private void openGrid (BoardLocation location, int num) {
-        getGridAt(location).removeAll();
-        getGridAt(location).add(new ItemComponent(num));
-    }
-
     private void flagGrid (BoardLocation location) {
 
     }

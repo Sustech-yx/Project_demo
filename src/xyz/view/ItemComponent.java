@@ -2,10 +2,23 @@ package xyz.view;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.*;
 
 public class ItemComponent extends JComponent {
 
+    private static Font font;
     private int num;
+
+    static {
+        try {
+            font = Font.createFont( Font.TRUETYPE_FONT,
+                    new FileInputStream(new File("src/xyz/view/Font/FrozenNeutra.otf")) );
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        font = font.deriveFont(Font.PLAIN, 80);
+    }
+
     public ItemComponent (int num) {
         this.num = num;
     }
@@ -17,14 +30,15 @@ public class ItemComponent extends JComponent {
     }
 
     private void painting (Graphics g) {
-        ((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         int spacing = (int) (getWidth() * 0.05);
         Image image = ItemUtil.genItem(num);
+
         if (image != null) {
             g.drawImage(image, spacing, spacing, getWidth() - 2 * spacing, getHeight() - 2 * spacing, this);
         } else {
             if (num == 0) return;
-            g.drawString("" + num, spacing, spacing);
+            g.setFont(font);
+            g.drawString("" + num, spacing + 18, spacing + 53);
         }
     }
 }

@@ -61,11 +61,11 @@ public class Board {
         return getGridAt(location).getNum();
     }
 
-    public void open (BoardLocation location) {
+    public void openGrid(BoardLocation location) {
         getGridAt(location).setOpened(true);
     }
 
-    public void flag (BoardLocation location) {
+    public void flagGrid (BoardLocation location) {
         getGridAt(location).setFlag(true);
     }
 

@@ -32,10 +32,10 @@ public class ScoreBoard extends JFrame {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        g.drawString("Player1-score:", 10, 80);
-        g.drawString("Player2-score:", 10, 160);
-        g.drawString("Player1-lose:", 10, 240);
-        g.drawString("Player2-lose:", 10, 320);
+        g.drawString("Player1-score:", 40, 80);
+        g.drawString("Player2-score:", 40, 160);
+        g.drawString("Player1-lose:", 40, 240);
+        g.drawString("Player2-lose:", 40, 320);
 
         g.drawString("" + scoreBoard[0][0], 300, 80);
         g.drawString("" + scoreBoard[0][1], 300, 160);

@@ -38,6 +38,7 @@ public class GameController implements GameListener {
 
     public void nextPlayer() {
         currentPlayer = currentPlayer == 0 ? 1 : 0;
+        System.out.print("Which is a valid click.");
     }
 
     @Override

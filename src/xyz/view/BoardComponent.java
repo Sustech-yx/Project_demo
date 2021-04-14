@@ -48,9 +48,14 @@ public class BoardComponent extends JComponent {
         return new BoardLocation(x / gridSize, y / gridSize);
     }
 
-    private void openGrid () {}
+    private void openGrid (BoardLocation location, int num) {
+        getGridAt(location).removeAll();
+        getGridAt(location).add(new ItemComponent(num));
+    }
 
-    private void flagGrid () {}
+    private void flagGrid (BoardLocation location) {
+
+    }
 
     @Override
     protected void processMouseEvent(MouseEvent e) {

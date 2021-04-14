@@ -5,14 +5,18 @@ import java.awt.*;
 
 public class ItemComponent extends JComponent {
 
-    private Image mask;
-    private Image mine;
-    private Image flag;
-
-    {
-        Toolkit toolkit = this.getToolkit();
-        mask = toolkit.getImage("src/xyz/view/pic/maskgrid.png");
-        mine = toolkit.getImage("src/xyz/view/pic/gridWithMine.png");
-        flag = toolkit.getImage("src/xyz/view/pic/flagmaskgrid.png");
+    private Image image;
+    public ItemComponent (int num) {
+        image = ItemUtil.genItem(num);
     }
+
+    @Override
+    public void paintComponent (Graphics g) {
+
+    }
+
+    private void painting (Graphics g) {
+
+    }
+
 }

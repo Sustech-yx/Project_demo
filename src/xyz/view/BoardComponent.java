@@ -4,14 +4,15 @@ import xyz.listener.GameListener;
 import xyz.model.BoardLocation;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.io.FileInputStream;
 import java.util.*;
+import java.util.List;
 
 public class BoardComponent extends JComponent {
     private List<GameListener> listenerList = new ArrayList<>();
     private SquareComponent[][] gridComponents;
-    private int rowLength;
-    private int colLength;
     private int row;
     private int col;
     private int gridSize;
@@ -21,11 +22,9 @@ public class BoardComponent extends JComponent {
         setLayout(null);
         setSize(rowLength, colLength);
 
-        this.rowLength = rowLength;
-        this.colLength = colLength;
         this.row = row;
         this.col = col;
-        this.gridSize = rowLength / row;
+        this.gridSize = colLength / col;
         gridComponents = new SquareComponent[row][col];
         initialGridComponent();
     }
@@ -97,4 +96,5 @@ public class BoardComponent extends JComponent {
     public void unregisterListener(GameListener listener) {
         listenerList.remove(listener);
     }
+
 }

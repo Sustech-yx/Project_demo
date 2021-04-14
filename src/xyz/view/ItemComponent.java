@@ -12,7 +12,7 @@ public class ItemComponent extends JComponent {
     static {
         try {
             font = Font.createFont( Font.TRUETYPE_FONT,
-                    new FileInputStream(new File("src/xyz/view/Font/FrozenNeutra.otf")) );
+                    new FileInputStream("src/xyz/view/Font/FrozenNeutra.otf") );
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -38,7 +38,7 @@ public class ItemComponent extends JComponent {
         } else {
             if (num == 0) return;
             g.setFont(font);
-            g.drawString("" + num, spacing + 18, spacing + 53);
+            g.drawString("" + num, 18, 55);
         }
     }
 }

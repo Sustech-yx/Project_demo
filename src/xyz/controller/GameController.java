@@ -1,11 +1,8 @@
 package xyz.controller;
 
 import xyz.listener.GameListener;
-import xyz.model.Board;
-import xyz.model.BoardLocation;
-import xyz.view.BoardComponent;
-import xyz.view.ScoreBoard;
-import xyz.view.SquareComponent;
+import xyz.model.*;
+import xyz.view.*;
 
 public class GameController implements GameListener {
     private final BoardComponent view1;
@@ -38,7 +35,7 @@ public class GameController implements GameListener {
 
     public void nextPlayer() {
         currentPlayer = currentPlayer == 0 ? 1 : 0;
-        System.out.print("Which is a valid click.");
+        System.out.print("which is a valid click.");
     }
 
     @Override
@@ -53,7 +50,7 @@ public class GameController implements GameListener {
             nextPlayer();
             view1.repaint();
         } else {
-            System.out.print("But is not a valid click.");
+            System.out.print("but is not a valid click.");
         }
     }
 
@@ -71,7 +68,7 @@ public class GameController implements GameListener {
             view1.setItemAt(location, model.getNumAt(location));
             nextPlayer();
         } else {
-            System.out.print("But is not a valid click.");
+            System.out.print("but is not a valid click.");
         }
     }
 
@@ -84,7 +81,7 @@ public class GameController implements GameListener {
     private void printMessage (BoardLocation location, String str) {
         int row_in_message = location.getRow();
         int column_in_message = location.getColumn();
-        String format = "\nOn Player %d %s click at (%d, %d). ";
+        String format = "\nOn Player %d %s click at (%d, %d), ";
         System.out.printf(format, currentPlayer, str, row_in_message + 1, column_in_message + 1);
     }
 

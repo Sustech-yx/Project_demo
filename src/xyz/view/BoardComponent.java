@@ -1,6 +1,7 @@
 package xyz.view;
 
 import xyz.listener.GameListener;
+import xyz.model.BoardLocation;
 
 import javax.swing.*;
 import java.awt.event.MouseEvent;
@@ -38,6 +39,18 @@ public class BoardComponent extends JComponent {
             }
         }
     }
+
+    public SquareComponent getGridAt(BoardLocation location) {
+        return gridComponents[location.getRow()][location.getColumn()];
+    }
+
+    private BoardLocation getLocationByPosition(int x, int y) {
+        return new BoardLocation(x / gridSize, y / gridSize);
+    }
+
+    private void openGrid () {}
+
+    private void flagGrid () {}
 
     @Override
     protected void processMouseEvent(MouseEvent e) {

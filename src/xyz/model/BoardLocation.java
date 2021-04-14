@@ -2,10 +2,10 @@ package xyz.model;
 
 public class BoardLocation {
     private int row;
-    private int col;
+    private int column;
 
-    public BoardLocation (int row, int col) {
-        this.col = col;
+    public BoardLocation (int row, int column) {
+        this.column = column;
         this.row = row;
     }
 
@@ -13,7 +13,7 @@ public class BoardLocation {
         return row;
     }
 
-    public int getCol() {
-        return col;
+    public int getColumn() {
+        return column;
     }
 }

@@ -96,5 +96,4 @@ public class BoardComponent extends JComponent {
     public void unregisterListener(GameListener listener) {
         listenerList.remove(listener);
     }
-
 }

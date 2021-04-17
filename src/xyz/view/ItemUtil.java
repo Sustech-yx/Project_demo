@@ -15,15 +15,8 @@ public class ItemUtil {
     }
 
     public static Image genItem (int i) {
-        switch (i) {
-            case 9:
-                return mask;
-            case 10:
-                return mine;
-            case 11:
-                return flag;
-            default:
-                return null;
-        }
+        return mask;
+        // TODO: This is just a sample. You should implement the method here to provide the 可见的 component according to the argument i
+
     }
 }

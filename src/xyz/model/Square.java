@@ -30,6 +30,7 @@ public class Square {
     public byte getNumberOfLandMine () {
         return numberOfLandMine;
     }
+
     public void setOpened(boolean opened) {
         isOpened = opened;
     }
@@ -51,11 +52,10 @@ public class Square {
     }
 
     public int getNum () {
-        if (isFlag) return 11;
-        if (!isOpened) return 9;
-        if (hasLandMine) return 10;
-        return numberOfLandMine;
+        return 0;
+        // TODO: You should implement the method to give the number of the item store in the grid
     }
+
 
     /*
     Each grid has five states: the first two include a grid that is not open or is marked;

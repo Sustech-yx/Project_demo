@@ -35,47 +35,27 @@ public class GameController implements GameListener {
 
     public void nextPlayer() {
         currentPlayer = currentPlayer == 0 ? 1 : 0;
-        System.out.print("which is a valid click.");
     }
 
     @Override
     public void onPlayerLeftClick(BoardLocation location, SquareComponent component) {
         printMessage(location, "left");
-        if (model.isValidClick(location, 1)) {
-            model.openGrid(location);
-            view1.setItemAt(location, model.getNumAt(location));
-            if (model.getGridAt(location).hasLandMine()) {
-                Lose();
-            }
-            nextPlayer();
-            view1.repaint();
-        } else {
-            System.out.print("but is not a valid click.");
-        }
+        nextPlayer();
+        // TODO: Implement the action after player click left Click
     }
 
     @Override
     public void onPlayerRightClick(BoardLocation location, SquareComponent component) {
         printMessage(location, "right");
-        if (model.isValidClick(location, 2)) {
-            if (model.getGridAt(location).hasLandMine()) {
-                Goal();
-                model.flagGrid(location);
-            } else {
-                Lose();
-                model.openGrid(location);
-            }
-            view1.setItemAt(location, model.getNumAt(location));
-            nextPlayer();
-        } else {
-            System.out.print("but is not a valid click.");
-        }
+        nextPlayer();
+        // TODO: Implement the action after player click right Click
     }
 
     @Override
     public void onPlayerMidClick(BoardLocation location, SquareComponent component) {
         printMessage(location, "middle");
-
+        nextPlayer();
+        // TODO: Implement the action after player click middle Click
     }
 
     private void printMessage (BoardLocation location, String str) {
@@ -83,15 +63,5 @@ public class GameController implements GameListener {
         int column_in_message = location.getColumn();
         String format = "\nOn Player %d %s click at (%d, %d), ";
         System.out.printf(format, currentPlayer, str, row_in_message + 1, column_in_message + 1);
-    }
-
-    private void Goal () {
-        view2.Goal(currentPlayer);
-        view2.repaint();
-    }
-
-    private void Lose () {
-        view2.Lose(currentPlayer);
-        view2.repaint();
     }
 }

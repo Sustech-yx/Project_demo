@@ -24,6 +24,15 @@ public class GameController implements GameListener {
 
     public void initialGameState () {
         currentPlayer = 0;
+        refresh();
+    }
+
+    public void nextPlayer() {
+        currentPlayer = currentPlayer == 0 ? 1 : 0;
+        System.out.print("Which is a valid click.");
+    }
+
+    private void refresh () {
         int num;
         BoardLocation location;
         for (int row = 0; row < model.getRow(); row ++) {
@@ -36,17 +45,12 @@ public class GameController implements GameListener {
         view1.repaint();
     }
 
-    public void nextPlayer() {
-        currentPlayer = currentPlayer == 0 ? 1 : 0;
-        System.out.print("Which is a valid click.");
-    }
-
     @Override
     public void onPlayerLeftClick(BoardLocation location, SquareComponent component) {
         printMessage(location, "left");
         if (model.isValidClick(location, 1)) {
             model.openGrid(location);
-            view1.setItemAt(location, model.getNumAt(location));
+            refresh();
             if (model.getGridAt(location).hasLandMine()) {
                 Lose();
             }

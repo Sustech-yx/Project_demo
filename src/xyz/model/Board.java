@@ -37,7 +37,7 @@ public class Board {
     }
 
     static int[][] direction = new int[][]{
-            {1, 1}, {1, -1}, {1, 0}, {0, 1}, {0, -1}, {-1, 1}, {-1, -1}, {-1, 0}
+            {-1, 0}, {0, 1}, {1, 0}, {0, -1}, {1, 1}, {1, -1}, {-1, 1}, {-1, -1}
     };
     public byte calculateNum (int i, int j) {
         // TODO: This is just the simplest solution and can cause the game to fail in some cases. Please update in a reasonable manner.
@@ -62,7 +62,25 @@ public class Board {
     }
 
     public void openGrid(BoardLocation location) {
-        getGridAt(location).setOpened(true);
+        if (getGridAt(location).hasLandMine()) {
+            getGridAt(location).setOpened(true);
+        } else recOpenGrid(location.getRow(), location.getColumn());
+    }
+
+    private void recOpenGrid (int i, int j) {
+        if (grid[i][j].hasLandMine()) return;
+        grid[i][j].setOpened(true);
+
+        int x, y;
+        for (int k = 0; k < 4; k++) {
+            x = i + direction[k][0];
+            y = j + direction[k][1];
+            if (x < 0 || x >= row || y < 0 || y >= column) continue;
+            if (!grid[x][y].isOpened() && !grid[x][y].hasLandMine()) {
+                grid[x][y].setOpened(true);
+                if (grid[x][y].getNumberOfLandMine() == 0) recOpenGrid(x, y);
+            }
+        }
     }
 
     public void flagGrid (BoardLocation location) {
